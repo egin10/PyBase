@@ -3,4 +3,6 @@ include
 lib
 local
 pip-selfcheck.json
+theBox/.vscode
+theBox/theBox/conf.py
 *.pyc
