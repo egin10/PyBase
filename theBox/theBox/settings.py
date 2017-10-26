@@ -82,16 +82,16 @@ WSGI_APPLICATION = 'theBox.wsgi.application'
 #         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
 # }
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': DATABASE_NAME,
-#         'USER' : DATABASE_USER,
-#         'PASSWORD' : DATABASE_PASS,
-#         'HOST' : DATABASE_HOST,
-#         'PORT' : DATABASE_PORT,
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': DATABASE_NAME,
+        'USER' : DATABASE_USER,
+        'PASSWORD' : DATABASE_PASS,
+        'HOST' : DATABASE_HOST,
+        'PORT' : DATABASE_PORT,
+    }
+}
 
 
 # Password validation
