@@ -17,9 +17,13 @@ PyBase is simple web interface for Snort and Suricata as IDS/IPS. it's use `pyth
 * `./manage.py runserver`
 * open your browser and access on `http://localhost:8000`
 
+#### Route
+* /admin
+* /monitor
+
 #### Contribution
 > make some issues and give advice to some features
-> after that you can try to fork and make a PR
+> after that you can try to fork and make a PR, I just start this project.
 
 ---
 egin10
