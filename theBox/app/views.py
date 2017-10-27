@@ -19,7 +19,8 @@ def index(request):
 def scan(request):
 	if(request.method == 'POST'):
 		path = request.POST['path']
-		cmd = KICOMAV + " " + path
+		opt = request.POST['options']
+		cmd = KICOMAV + " " + path + " " + opt
 		result = os.popen(cmd).read()
 		return render(request, 'scan.html', {'scan' : 'active', 'cDir': os.getcwd(), \
 												'result': result })
