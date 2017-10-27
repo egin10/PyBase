@@ -5,7 +5,8 @@
     <hr>
 </div>
 
-<form class="form-horizontal">
+<form class="form-horizontal" action="{% url 'vtScan' %}" method="POST">
+    {% csrf_token %}
     <div class="form-group">
         <label class="control-label col-sm-2" for="mode">Mode</label>
         <div class="col-sm-3">
@@ -18,14 +19,14 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="control-label col-sm-2" for="scan">Scan</label>
+        <label class="control-label col-sm-2" for="data">Scan</label>
         <div class="col-sm-3">
-            <input type="text" class="form-control" id="scan">
+            <input type="text" class="form-control" id="data" name="data">
         </div>
     </div>
     <div class="form-group"> 
         <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-default">Scan</button>
+            <button type="submit" class="btn btn-default">Send</button>
         </div>
     </div>
 </form>

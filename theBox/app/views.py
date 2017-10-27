@@ -4,8 +4,8 @@ from __future__ import unicode_literals
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
-from .const import *
-import platform
+from .const import VERSION, OS
+from tools.vT import vT
 import os
 
 # Create your views here.
@@ -24,10 +24,14 @@ def ssh(request):
     return render(request, 'ssh.html', {'ssh' : 'active'})
 
 #VTScan
-def vtscan(request):
-    return render(request, 'virustotal.html', {'vtscan' : 'active'})
+def vtscan(request, mode=None, data=None):
+	if(request.method == 'POST'):
+		result = request.POST['mode'] + " " + request.POST['data']
+		return HttpResponse(result)
+	else:
+		return render(request, 'virustotal.html', {'vtscan' : 'active'})
 
 #Command
-def cmd(request, cmd):
+def cmd(request, cmd=None):
 	result = os.popen(cmd).read()
 	return HttpResponse(result)
