@@ -7,9 +7,20 @@
 
 <form class="form-horizontal">
     <div class="form-group">
-        <label class="control-label col-sm-2" for="email">IP Address</label>
+        <label class="control-label col-sm-2" for="mode">Mode</label>
         <div class="col-sm-3">
-            <input type="text" class="form-control" id="ipadd" placeholder="IP Address">
+            <select name="mode">
+                <option value="file">File</option>
+                <option value="ip">IP Address</option>
+                <option value="domain">Domain</option>
+                <option value="url">URL</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="scan">Scan</label>
+        <div class="col-sm-3">
+            <input type="text" class="form-control" id="scan">
         </div>
     </div>
     <div class="form-group"> 
@@ -20,7 +31,6 @@
 </form>
 
 <div class="well">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean lacinia bibendum nulla sed consectetur.</p>
 </div>
 
 {% include 'partials/footer.html' %}

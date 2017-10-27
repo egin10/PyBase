@@ -7,4 +7,5 @@ urlpatterns = [
     url(r'^scan', views.scan, name="KicomAVscan"),
     url(r'^ssh', views.ssh, name="ssh"),
     url(r'^vtscan', views.vtscan, name="vtScan"),
+    url(r'^command/(?P<cmd>\D+)', views.cmd),
 ]
