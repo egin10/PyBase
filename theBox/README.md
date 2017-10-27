@@ -6,7 +6,8 @@ PyBase is simple web interface for Snort and Suricata as IDS/IPS. it's use `pyth
 * Django v.1.11.6
 * MySQL-python v.1.2.5
 * pytz v.2017.2
-* Database Schema `https://github.com/firnsy/barnyard2/blob/master/schemas/create_mysql`
+* Barnyard2 Database Schema [link](https://github.com/firnsy/barnyard2/blob/master/schemas/create_mysql)
+* KicomAV v0.28 [link](https://github.com/hanul93/kicomav)
 
 #### Installation
 * `git clone https://github.com/egin10/PyBase.git`
