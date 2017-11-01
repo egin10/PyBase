@@ -6,7 +6,10 @@ OS = platform.system()
 PLATFORM = platform.platform()
 
 #Virus Total
-VT_API_KEY = 'Your Virustotal API_KEY'
+VT_API_KEY = 'Your API_KEY'
 
 #Kicom Anti Virus
 KICOMAV = 'python app/tools/kicomav/Release/kAV.py'
+
+#Kibana URL
+KIBANA = 'http://localhost:5601'

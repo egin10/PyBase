@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 
-from .const import VERSION, OS, KICOMAV, VT_API_KEY
+from .const import VERSION, OS, KICOMAV, VT_API_KEY, KIBANA
 from tools.vT import ipReport, domainReport, urlScan, urlReport
 import os
 
@@ -13,7 +13,7 @@ import os
 def index(request):
     return render(request, 'index.html', {'index' : 'active', \
     										'version' : VERSION, \
-    										'os' : OS, })
+    										'os' : OS, 'kibana' : KIBANA})
 
 #KicomAV
 def scan(request):
