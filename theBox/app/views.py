@@ -2,10 +2,10 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 
-from .const import VERSION, OS, KICOMAV
-from tools.vT import vT
+from .const import VERSION, OS, KICOMAV, VT_API_KEY
+from tools.vT import ipReport, domainReport, urlScan, urlReport
 import os
 
 # Create your views here.
@@ -27,15 +27,25 @@ def scan(request):
 	else:
 		return render(request, 'scan.html', {'scan' : 'active', 'cDir': os.getcwd()})
 
-#SSHParamiko
-def ssh(request):
-    return render(request, 'ssh.html', {'ssh' : 'active'})
-
 #VTScan
 def vtscan(request):
 	if(request.method == 'POST'):
-		result = request.POST['mode'] + " " + request.POST['data']
-		return HttpResponse(result)
+		#result = request.POST['mode'] + " " + request.POST['data']
+		if(request.POST['mode'] == 'ip'):
+			ip = request.POST['data']
+			result = ipReport(ip, VT_API_KEY)
+			return JsonResponse(result, safe=False)
+
+		elif(request.POST['mode'] == 'domain'):
+			domain = request.POST['data']
+			result = domainReport(domain, VT_API_KEY)
+			return JsonResponse(result, safe=False)
+
+		elif(request.POST['mode'] == 'url'):
+			url = request.POST['data']
+			scan = urlScan(url, VT_API_KEY)
+			result = urlReport(scan['scan_id'], VT_API_KEY)
+			return JsonResponse(result, safe=False)
 	else:
 		return render(request, 'virustotal.html', {'vtscan' : 'active'})
 
