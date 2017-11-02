@@ -50,7 +50,7 @@ def vtscan(request):
 		elif(request.POST['mode'] == 'file'):
 			file = request.FILES['file']
 			scan = fileScan(file, VT_API_KEY)
-			result = fileReport(scan['resource'], VT_API_KEY)
+			result = fileReport(scan['sha1'], VT_API_KEY)
 			return JsonResponse(result, safe=False)
 	else:
 		return render(request, 'virustotal.html', {'vtscan' : 'active'})
