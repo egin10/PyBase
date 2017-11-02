@@ -25,3 +25,16 @@ def urlReport(resource, api_key):
 	params = {'apikey': api_key, 'resource':resource}
 	response = requests.get(url, params=params)
 	return response.json()
+
+def fileScan(file, api_key):
+	url = 'https://www.virustotal.com/vtapi/v2/file/scan'
+	params = {'apikey': api_key}
+	files = {'file': file}
+	response = requests.post(url, files=files, params=params)
+	return response.json()
+
+def fileReport(resource, api_key):
+	url = 'https://www.virustotal.com/vtapi/v2/file/report'
+	params = {'apikey': api_key, 'resource': resource}
+	response = requests.get(url, params=params)
+	return response.json()

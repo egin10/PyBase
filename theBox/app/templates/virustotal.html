@@ -5,33 +5,64 @@
     <hr>
 </div>
 
-<form class="form-horizontal" action="{% url 'vtScan' %}" method="POST">
+<form class="form-horizontal" action="{% url 'vtScan' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="form-group">
         <label class="control-label col-sm-2" for="mode">Mode</label>
         <div class="col-sm-3">
-            <select name="mode">
-                <option value="file">File</option>
+            <select name="mode" id="mode">
                 <option value="ip">IP Address</option>
                 <option value="domain">Domain</option>
                 <option value="url">URL</option>
+                <option value="file">File</option>
             </select>
         </div>
     </div>
     <div class="form-group">
-        <label class="control-label col-sm-2" for="data">Scan</label>
+        <label class="control-label col-sm-2" for="data">IP/URL/Domain</label>
         <div class="col-sm-3">
             <input type="text" class="form-control" id="data" name="data">
         </div>
     </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="file">File</label>
+        <div class="col-sm-3">
+            <input type="file" id="file" name="file">
+        </div>
+    </div>
     <div class="form-group"> 
         <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-default">Send</button>
+            <button type="submit" class="btn btn-default">Scan</button>
         </div>
     </div>
 </form>
 
 <div class="well">
+    {{results}}
 </div>
 
+<script type="text/javascript">
+    $(function(){
+        const file = $("#file");
+        const data = $("#data");
+        file.prop("disabled", true);
+        data.prop("disabled", false);
+
+        $("#mode").on("change", function(){
+            let mode = $("#mode").val();
+            if(mode == 'file'){
+                file.prop("disabled", false);
+                data.prop("disabled", true);
+            }
+        });
+
+        $("#file").bind("change", function(){
+            const file = this.files[0].size;
+            const max = 32 * 1024 * 1024;
+            if(file > max){
+                alert("file must under 32MB");
+            }
+        });
+    });
+</script>
 {% include 'partials/footer.html' %}

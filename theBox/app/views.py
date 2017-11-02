@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 
 from .const import VERSION, OS, KICOMAV, VT_API_KEY, KIBANA
-from tools.vT import ipReport, domainReport, urlScan, urlReport
+from tools.vT import ipReport, domainReport, urlScan, urlReport, fileScan, fileReport
 import os
 
 # Create your views here.
@@ -45,6 +45,12 @@ def vtscan(request):
 			url = request.POST['data']
 			scan = urlScan(url, VT_API_KEY)
 			result = urlReport(scan['scan_id'], VT_API_KEY)
+			return JsonResponse(result, safe=False)
+
+		elif(request.POST['mode'] == 'file'):
+			file = request.FILES['file']
+			scan = fileScan(file, VT_API_KEY)
+			result = fileReport(scan['resource'], VT_API_KEY)
 			return JsonResponse(result, safe=False)
 	else:
 		return render(request, 'virustotal.html', {'vtscan' : 'active'})
