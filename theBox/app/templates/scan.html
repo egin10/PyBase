@@ -1,12 +1,13 @@
 {% include 'partials/header.html' %}
 
     <div>
-        <h2>KicomAV Scanning Virus</h2>
+        <h2>Scanner</h2>
+        KicomAV and ClamAV
         <hr>
     </div>
 
     <div class="col-sm-8">
-        <form class="form-horizontal" action="{% url 'KicomAVscan' %}" method="POST">
+        <form class="form-horizontal" action="{% url 'scan' %}" method="POST">
         {% csrf_token %}
             <div class="form-group">
                 <label class="control-label col-sm-2" for="path">Path</label>
