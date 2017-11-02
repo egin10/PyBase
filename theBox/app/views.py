@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 
-from .const import VERSION, OS, KICOMAV, VT_API_KEY, KIBANA
+from .const import VERSION, OS, KICOMAV, VT_API_KEY, KIBANA, CLAMAV
 from tools.vT import ipReport, domainReport, urlScan, urlReport, fileScan, fileReport
 import os
 
@@ -15,15 +15,17 @@ def index(request):
     										'version' : VERSION, \
     										'os' : OS, 'kibana' : KIBANA})
 
-#KicomAV
+#KicomAV and ClamAV
 def scan(request):
 	if(request.method == 'POST'):
 		path = request.POST['path']
 		opt = request.POST['options']
-		cmd = KICOMAV + " " + path + " " + opt
-		result = os.popen(cmd).read()
+		kicom = KICOMAV + " " + path + " " + opt
+		clam = CLAMAV + path
+		resultKicom = os.popen(kicom).read()
+		resultClam = os.popen(clam).read()
 		return render(request, 'scan.html', {'scan' : 'active', 'cDir': os.getcwd(), \
-												'result': result })
+												'resultKicom': resultKicom, 'resultClam': resultClam })
 	else:
 		return render(request, 'scan.html', {'scan' : 'active', 'cDir': os.getcwd()})
 

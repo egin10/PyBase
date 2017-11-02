@@ -13,3 +13,6 @@ KICOMAV = 'python app/tools/kicomav/Release/kAV.py'
 
 #Kibana URL
 KIBANA = 'http://localhost:5601'
+
+#ClamAV
+CLAMAV = 'clamscan -r --bell -v -i '
