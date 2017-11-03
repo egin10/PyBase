@@ -54,6 +54,10 @@
                 file.prop("disabled", false);
                 data.prop("disabled", true);
             }
+            else{
+                file.prop("disabled", true);
+                data.prop("disabled", false);   
+            }
         });
 
         $("#file").bind("change", function(){
