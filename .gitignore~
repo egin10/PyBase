@@ -5,5 +5,4 @@ local
 pip-selfcheck.json
 theBox/.vscode
 theBox/theBox/conf.py
-theBox/app/const.py
 *.pyc
